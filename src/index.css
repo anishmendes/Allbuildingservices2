@@ -13,3 +13,32 @@
     filter: drop-shadow(6px 8px 10px rgba(0, 0, 0, 0.5));
   }
 }
+/* Allow smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure that body or main containers can scroll */
+body, main {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Fix for mobile, set the overflow correctly */
+@media (max-width: 768px) {
+  .your-section-class {
+    overflow-y: auto; /* Ensure this section allows vertical scrolling */
+  }
+}
+
+/* Smooth transitions and animations that don't block scroll */
+.your-animation-class {
+  will-change: transform, opacity; /* For smoother animation handling */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Ensure content doesn’t get clipped during animations */
+section, .section-container {
+  overflow: hidden; /* This will prevent content overflow */
+}
+

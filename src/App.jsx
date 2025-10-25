@@ -12,6 +12,7 @@ import Abouth from "./components/Hero/Abouth";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "./index.css"
 
 import ServicePage from "./pages/services/ServicePage";
 import CareerHero from "./pages/career/CareerHero";
