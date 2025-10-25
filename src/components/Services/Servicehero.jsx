@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -129,6 +129,11 @@ const VISIBLE_BULLETS = 4;
 
 const Servicehero = () => {
   const [expanded, setExpanded] = useState({});
+
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top
+  }, []);
 
   const toggle = (key) => setExpanded((s) => ({ ...s, [key]: !s[key] }));
 

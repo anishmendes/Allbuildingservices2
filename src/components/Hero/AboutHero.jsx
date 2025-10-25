@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { IoIosArrowRoundForward } from "react-icons/io";
-
 import about from "../../assets/about.mp4"; // Your MP4 video
 import { motion } from "framer-motion";
 
@@ -65,6 +64,9 @@ const AboutHero = () => {
 
             <motion.p
               variants={fade(0.18)}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
               className="mt-5 text-lg leading-8 text-slate-800"
             >
               All Building &amp; Property Services helps clients with residential and
@@ -85,6 +87,9 @@ const AboutHero = () => {
             {/* CTAs */}
             <motion.div
               variants={fade(0.34)}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
               className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
               <Link

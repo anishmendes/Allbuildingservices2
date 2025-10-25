@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -23,13 +23,25 @@ export const FadeUp = (delay) => ({
 const Hero = () => {
   const navigate = useNavigate();
 
+  // Detect screen size to prevent autoplay on mobile devices
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Detect mobile screen size
+    };
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize); // Listen to resize
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full min-h-screen overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           src={HeroVideo}
-          autoPlay
+          autoPlay={!isMobile} // Disable autoplay on mobile
           loop
           muted
           playsInline
@@ -65,13 +77,13 @@ const Hero = () => {
             safety, and craftsmanship in every project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-          <div
-      onClick={() => navigate("/services")}
-      className="flex items-center gap-2 text-white text-base font-medium cursor-pointer"
-    >
-      View Our Services
-      <IoIosArrowRoundForward className="text-2xl text-teal-700 group-hover:translate-x-2 transition-transform duration-300" />
-    </div>
+            <div
+              onClick={() => navigate("/services")}
+              className="flex items-center gap-2 text-white text-base font-medium cursor-pointer"
+            >
+              View Our Services
+              <IoIosArrowRoundForward className="text-2xl text-teal-700 group-hover:translate-x-2 transition-transform duration-300" />
+            </div>
             <button
               onClick={() => navigate("/contact")}
               className="bg-teal-600 hover:bg-teal-700 transition text-white px-8 py-3 rounded-xl text-base font-semibold shadow-lg"

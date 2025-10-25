@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import industry from "../../assets/industry.jpeg";
 import dedicated from "../../assets/Dedicated.jpeg";
 import committed from "../../assets/Committed.jpeg";
@@ -77,6 +78,16 @@ const Services = () => {
                 <p className="mt-3 text-slate-700 leading-relaxed">
                   {service.description}
                 </p>
+
+                {/* View More Button */}
+                {/* <div className="mt-4">
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center justify-center rounded-full bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-teal-600/20 transition hover:bg-teal-700"
+                  >
+                    View More
+                  </Link>
+                </div> */}
               </div>
 
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-teal-600/0 transition group-hover:ring-teal-600/20" />
