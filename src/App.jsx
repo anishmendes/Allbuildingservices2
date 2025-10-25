@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Loader from "./components/Loader/loader";  // Import Loader component
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
@@ -7,9 +7,9 @@ import Subscribe from "./components/Subscribe/Subscribe";
 import Banner2 from "./components/Banner/Banner2";
 import Footer from "./components/Footer/Footer";
 import AboutPage from "./pages/about/AboutPage";  
-import Contact from './pages/contact/Contact'
-import Abouth from "./components/Hero/Abouth"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Contact from './pages/contact/Contact';
+import Abouth from "./components/Hero/Abouth";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -24,12 +24,24 @@ AOS.init();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);  // State to manage loader visibility
 
+  // Custom hook to handle scroll to top on route change
+  const ScrollToTop = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to top on route change
+    }, [location]);
+
+    return null;
+  };
+
   return (
     <>
       {/* Show the loader initially */}
       {isLoading && <Loader setIsLoading={setIsLoading} />}
       
       <Router>
+        <ScrollToTop /> {/* Use the scroll to top functionality */}
         <main className="overflow-x-hidden bg-white text-dark">
           {/* Define Routes */}
           <Routes>
