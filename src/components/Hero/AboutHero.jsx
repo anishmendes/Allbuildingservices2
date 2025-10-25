@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import about from "../../assets/about.mp4"; // Your MP4 video
-import { motion } from "framer-motion";
 
 /* ---------- Motion ---------- */
 const fade = (d = 0) => ({
@@ -16,6 +16,16 @@ const fade = (d = 0) => ({
 });
 
 const AboutHero = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video play status
+
+  const handlePlay = () => {
+    setIsVideoPlaying(true);
+  };
+
+  const handlePause = () => {
+    setIsVideoPlaying(false);
+  };
+
   return (
     <section className="relative overflow-hidden bg-white">
       <Navbar />
@@ -125,7 +135,7 @@ const AboutHero = () => {
                 src={about}
                 alt="All Building & Property Services on site"
                 className="h-full w-full object-cover"
-                autoPlay
+                autoPlay={isVideoPlaying} // Video will play based on state
                 loop
                 muted
               />
